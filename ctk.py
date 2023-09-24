@@ -97,7 +97,7 @@ label.grid(sticky="nsew", row=3 , column=9, padx=50, pady=20)
 
 pages_entry = customtkinter.CTkEntry(master=app)
 pages_entry.place(relx=0.5, rely=0.5, anchor=customtkinter.N)
-pages_entry.insert(0, "10")
+
 
 pages = customtkinter.CTkLabel(master=app, text="Сколько страниц нужно парсить?")
 pages.place(relx=0.5, rely=0.47, anchor=customtkinter.CENTER)
