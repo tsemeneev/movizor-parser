@@ -1,5 +1,5 @@
 @echo off
-set "src=C:\"
+set "src=.\docs"
 set "dest=C:\Users\%USERNAME%\Documents"
 
 if not exist "%dest%" mkdir "%dest%"
