@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 
 def authenticate(mail, password):
     try:
-        driver = headless_driver()
+        driver = headless_driver('')
         driver.get('https://movizor-info.ru/client/signin/')
         time.sleep(10)
         input_mail = driver.find_element(By.XPATH, '//input[@name="email"]')
@@ -20,15 +20,16 @@ def authenticate(mail, password):
         input_password.send_keys(password)
         time.sleep(2)
         input_password.send_keys(Keys.ENTER)
-        time.sleep(40)
+        time.sleep(2)
         with open('cookies.pkl', 'wb') as f:
             pickle.dump(driver.get_cookies(), f)
-        time.sleep(10)
-        driver.close()
-        driver.quit()
+        time.sleep(2)
+        
             
     except Exception as e:
-        print(e)
+        return str(e)
+    
+    finally:
         driver.close()
         driver.quit()
-        
+     
