@@ -96,6 +96,7 @@ def main_view(proxy):
 
 
 def parser(proxy, pages_count):
+    print(proxy, pages_count)
     main_url = main_view(proxy)
     
     create_excel()
@@ -129,10 +130,8 @@ def parser(proxy, pages_count):
         return 'Success'
     except Exception as e:
         print(e)
-        return 'Error'
+        return e
         
     finally:
         driver.close()
         driver.quit()
-
-

@@ -11,6 +11,10 @@ customtkinter.set_default_color_theme("green")  # Themes: blue (default), dark-b
 
 
 def button_function(proxy, pages_count):
+   
+    proxy = proxy_entry.get()
+    pages_count = pages_entry.get()
+    
     label.destroy()
     button.destroy()
     pages_entry.destroy()
@@ -26,13 +30,14 @@ def button_function(proxy, pages_count):
     text.place(relx=0.5, rely=0.5, anchor=customtkinter.CENTER)
     app.update()
     
+    
     result = parser(proxy, pages_count)
     if result == 'Success':
         run_bat_script()
         text.configure(text="Поздравляю! Мы успешно собрали данные.\nСохранили их в Excel файле и положили в папку Documents на С: диске.")
         app.update() 
     else:
-        text.configure(text="Что-то пошло не так. Обратитесь к создателю парсера")
+        text.configure(text="Что-то пошло не так. Обратитесь к создателю парсера. Ошибка: " + result)
         app.update()
     
     
@@ -47,7 +52,7 @@ def reauth(login_entry, password_entry):
         result.configure(text="Авторизация прошла успешно")
         app.update()
     except Exception as e:
-        result.configure(text="Что-то пошло не так. Авторизация не удалась")
+        result.configure(text="Что-то пошло не так. Авторизация не удалась. Ошибка: " + str(e))
         app.update()
     
     
@@ -114,9 +119,8 @@ auth_text = customtkinter.CTkLabel(master=app,
 auth_text.place(relx=0.5, rely=0.85, anchor=customtkinter.CENTER)
 auth_button = customtkinter.CTkButton(master=app, text="Обновить", command=update_cookies)
 auth_button.place(relx=0.5, rely=0.92, anchor=customtkinter.CENTER)
-proxy_data = proxy_entry.get()
-pages_data = pages_entry.get()
 
-button = customtkinter.CTkButton(master=app, text="Запустить", command=lambda: button_function(proxy_data, pages_data))
+
+button = customtkinter.CTkButton(master=app, text="Запустить", command=lambda: button_function(proxy_entry, pages_entry))
 button.place(relx=0.5, rely=0.7, anchor=customtkinter.CENTER)
 app.mainloop()
