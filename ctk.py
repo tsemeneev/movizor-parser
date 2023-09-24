@@ -109,11 +109,11 @@ proxy_text = customtkinter.CTkLabel(master=app, text="Введите прокс�
 proxy_text.place(relx=0.5, rely=0.3, anchor=customtkinter.CENTER)
 
 auth_text = customtkinter.CTkLabel(master=app, 
-                                   text="Обновить данные куки и повторно пройти авторизацию",
+                                   text="Обновить данные куки и повторно пройти авторизацию (по требованию)",
                                    wraplength=250)
 auth_text.place(relx=0.5, rely=0.85, anchor=customtkinter.CENTER)
 auth_button = customtkinter.CTkButton(master=app, text="Обновить", command=update_cookies)
-auth_button.place(relx=0.5, rely=0., anchor=customtkinter.CENTER)
+auth_button.place(relx=0.5, rely=0.92, anchor=customtkinter.CENTER)
 proxy_data = proxy_entry.get()
 pages_data = pages_entry.get()
 
