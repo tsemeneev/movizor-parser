@@ -28,6 +28,7 @@ def button_function(proxy, pages_count):
     
     result = parser(proxy, pages_count)
     if result == 'Success':
+        run_bat_script()
         text.configure(text="Поздравляю! Мы успешно собрали данные.\nСохранили их в Excel файле и положили в папку Documents на С: диске.")
         app.update() 
     else:
