@@ -4,8 +4,8 @@ from main import parser
 from auth import authenticate
 
 
-customtkinter.set_appearance_mode("System")  # Modes: system (default), light, dark
-customtkinter.set_default_color_theme("dark-blue")  # Themes: blue (default), dark-blue, green
+customtkinter.set_appearance_mode("system")  # Modes: system (default), light, dark
+customtkinter.set_default_color_theme("green")  # Themes: blue (default), dark-blue, green
 
 
 
@@ -87,11 +87,11 @@ def run_bat_script():
 app = customtkinter.CTk()  # create CTk window like you do with the Tk window
 app.geometry("400x600")
 app.title("Парсер сайта movizor-info.ru")
+app.configure(bg="#c2fbfc")
 # Use CTkButton instead of tkinter Button
 label = customtkinter.CTkLabel(master=app, 
                                text="Перед началом парсинга укажите сколько страниц нужно парсить. На одной странице 10 карточек", 
                                font=("Arial", 15, "bold"),
-                               text_color="white",
                                wraplength=300)
 label.grid(sticky="nsew", row=3 , column=9, padx=50, pady=20)
 
@@ -103,7 +103,7 @@ pages = customtkinter.CTkLabel(master=app, text="Сколько страниц �
 pages.place(relx=0.5, rely=0.47, anchor=customtkinter.CENTER)
 
 proxy_entry = customtkinter.CTkEntry(master=app)
-proxy_entry.place(relx=0.5, rely=0.35, anchor=customtkinter.CENTER)
+proxy_entry.place(relx=0.5, rely=0.37, anchor=customtkinter.CENTER)
 
 proxy_text = customtkinter.CTkLabel(master=app, text="Введите прокси в поле ниже (обязательно)\nФормат: 127.0.0.1:8080")
 proxy_text.place(relx=0.5, rely=0.3, anchor=customtkinter.CENTER)
@@ -111,12 +111,12 @@ proxy_text.place(relx=0.5, rely=0.3, anchor=customtkinter.CENTER)
 auth_text = customtkinter.CTkLabel(master=app, 
                                    text="Обновить данные куки и повторно пройти авторизацию",
                                    wraplength=250)
-auth_text.place(relx=0.5, rely=0.7, anchor=customtkinter.CENTER)
+auth_text.place(relx=0.5, rely=0.85, anchor=customtkinter.CENTER)
 auth_button = customtkinter.CTkButton(master=app, text="Обновить", command=update_cookies)
-auth_button.place(relx=0.5, rely=0.76, anchor=customtkinter.CENTER)
+auth_button.place(relx=0.5, rely=0., anchor=customtkinter.CENTER)
 proxy_data = proxy_entry.get()
 pages_data = pages_entry.get()
 
 button = customtkinter.CTkButton(master=app, text="Запустить", command=lambda: button_function(proxy_data, pages_data))
-button.place(relx=0.5, rely=0.9, anchor=customtkinter.CENTER)
+button.place(relx=0.5, rely=0.7, anchor=customtkinter.CENTER)
 app.mainloop()
