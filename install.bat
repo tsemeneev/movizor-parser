@@ -1,5 +1,7 @@
 @echo off
 
+mkdir docs
+
 REM Создание виртуального окружения
 python -m venv venv
 
