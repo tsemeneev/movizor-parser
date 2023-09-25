@@ -1,6 +1,6 @@
 import pickle
 import time
-from main import headless_driver
+from drivers import headless_driver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 

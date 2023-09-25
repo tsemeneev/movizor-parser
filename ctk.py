@@ -37,7 +37,7 @@ def button_function(proxy, pages_count):
         text.configure(text="Поздравляю! Мы успешно собрали данные.\nСохранили их в Excel файле и положили в папку Documents на С: диске.")
         app.update() 
     else:
-        text.configure(text="Что-то пошло не так. Обратитесь к создателю парсера. Ошибка: " + result)
+        text.configure(text="Что-то пошло не так. Обратитесь к создателю парсера.")
         app.update()
     
     
