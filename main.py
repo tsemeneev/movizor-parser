@@ -29,7 +29,7 @@ def main_view(proxy):
 
 
 def parser(proxy, pages_count):
-    print(proxy, pages_count)
+    print(f'proxy: {proxy}, количество страниц: {pages_count}')
     main_url = main_view(proxy)
 
     data_to_excel.create_excel()
@@ -57,9 +57,7 @@ def parser(proxy, pages_count):
             next_page = driver.find_element(By.CLASS_NAME, "pagination").find_elements(
                 By.TAG_NAME, "a")[-1].get_attribute('href')
             time.sleep(2)
-            print(next_page[:-1])
             driver.get(f'{next_page[:-1]}{i}')
-            print(driver.current_url)
             time.sleep(1)
 
         return 'Success'

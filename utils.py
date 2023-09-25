@@ -66,41 +66,27 @@ class DataToExcel:
 
     def collect_data(self, text, proxy):
         short_name = re.search(r'(.+)\s-', text).group(1)
-        print(short_name)
         full_name = re.search(r'\n(.+)\s+ИНН', text).group(1)
-        print(full_name)
         status = re.search(r'-\s(.+)\n', text).group(1)
-        print(status)
         inn = re.search(r'ИНН\s(\d+),', text).group(1)
-        print(inn)
         ogrn = re.search(r'ОГРН\s(\d+),', text).group(1)
-        print(ogrn)
         address = re.search(r"\s+(\d{6},.+|.+)\s+ОК", text)
         address = '' if address is None else address.group(1)
-        print(address)
         city = re.search(r'\s\d{6}.+(г\.\w+),', text)
         city = address.split(',')[1] if city is None else city.group(1)
-        print(city)
         authorized_capital = re.search(r'капитал\s(.+)руб.,', text)
         authorized_capital = '' if authorized_capital is None else authorized_capital.group(1)
-        print(authorized_capital)
         registered_date = re.search(r'(\d{4}-\d{2}-\d{2})', text)
         registered_date = '' if registered_date is None else registered_date.group(1)
-        print(registered_date)
 
         manager_name = re.search(r'[Дд]иректор\s(.+)\n', text)
         manager_name = '' if manager_name is None else manager_name.group(1)
-        print(manager_name)
         revenues = re.search(r'доходы\s(.+)руб', text)
         revenues = '' if revenues is None else revenues.group(1)
-        print(revenues)
-
         code = re.search(r'"ОКВЭД\s(\S{2,})\s"', text)
         code = '' if code is None else code.group(1)
-        
         activity_name = re.search(r"ОКВЭД\s\S{2,}\s(.+)", text)
         activity_name = '' if activity_name is None else activity_name.group(1)
-        print(activity_name)
 
         employees = parse_sbis(inn, ogrn)
         phone, email, site = parse_contacts(ogrn, proxy)
@@ -147,7 +133,6 @@ def parse_contacts(ogrn, proxy):
     for i in email:
         if '@' in i.text :
             emails.append(i.text)
-            print(i.text)
         else:
             sites.append(i.text)
     if len(emails) > 1:
